@@ -1,4 +1,3 @@
-// GradingComponent.java
 import java.util.Objects;
 
 /**
