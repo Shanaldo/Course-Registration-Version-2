@@ -282,7 +282,7 @@ public class Main {
         } while (choice != 0);
     }
 
-    // ------------------ Admin Methods for Course, Student, Enrollment, etc. ------------------//
+    // ------------------ Admin Methods for Course, Student, Enrollment, etc. ------------------ //
 
     private static void addCourse(CourseRegistrationSystem crs, Scanner scanner) {
         System.out.print("Enter course ID (e.g., CMP1001): ");
@@ -351,7 +351,7 @@ public class Main {
         // Create the Course object (without grading components yet)
         Course course = new Course(courseId, courseName, credits, capacity, prerequisites);
 
-        // --- Prompt for dynamic grading components ---
+        // --- Prompt for dynamic grading components --- //
         int numComponents = 0;
         while (true) {
             System.out.print("Define grading components dynamically:\nHow many components are there? ");
@@ -433,6 +433,11 @@ public class Main {
     }
 
     private static void enrollStudentInCourse(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyCourse()) {
+            System.out.println("⚠ No course data available.");
+            return;
+        }
+
         System.out.print("Enter student ID to enroll: ");
         String studentId = scanner.nextLine().trim();
         System.out.print("Enter course ID: ");
@@ -441,6 +446,11 @@ public class Main {
     }
 
     private static void removeCourse(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyCourse()) {
+            System.out.println("⚠ No course data available.");
+            return;
+        }
+
         System.out.print("Enter course ID to remove: ");
         String courseId = scanner.nextLine().trim();
         crs.removeCourse(courseId);
@@ -453,6 +463,11 @@ public class Main {
     }
 
     private static void removeStudentFromWaitlist(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyStudent()) {
+            System.out.println("⚠ No student data available.");
+            return;
+        }
+
         System.out.print("Enter student ID to remove from waitlist: ");
         String studentId = scanner.nextLine().trim();
         System.out.print("Enter course ID: ");
@@ -461,6 +476,11 @@ public class Main {
     }
 
     private static void removeStudentFromPriorityQueue(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyStudent()) {
+            System.out.println("⚠ No student data available.");
+            return;
+        }
+
         System.out.print("Enter student ID to remove from priority queue: ");
         String studentId = scanner.nextLine().trim();
         System.out.print("Enter course ID: ");
@@ -470,18 +490,33 @@ public class Main {
 
     // New methods in Main to handle viewing the waitlist and priority queue
     private static void viewWaitlistByCourseId(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyCourse()) {
+            System.out.println("⚠ No course data available.");
+            return;
+        }
+
         System.out.print("Enter course ID to view waitlist: ");
         String courseId = scanner.nextLine().trim();
         crs.viewWaitlistByCourseId(courseId);
     }
 
     private static void viewPriorityListByCourseId(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyCourse()) {
+            System.out.println("⚠ No course data available.");
+            return;
+        }
+
         System.out.print("Enter course ID to view priority list: ");
         String courseId = scanner.nextLine().trim();
         crs.viewPriorityListByCourseId(courseId);
     }
 
     private static void modifyCourse(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyCourse()) {
+            System.out.println("⚠ No course data available.");
+            return;
+        }
+
         System.out.print("Enter course ID to modify: ");
         String courseId = scanner.nextLine().trim();
 
@@ -624,12 +659,22 @@ public class Main {
     }
 
     public static void removeStudent(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyStudent()) {
+            System.out.println("⚠ No student data available.");
+            return;
+        }
+
         System.out.print("Enter student ID to remove: ");
         String studentId = scanner.nextLine().trim();
         crs.removeStudent(studentId);
     }
 
     public static void modifyStudent(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyStudent()) {
+            System.out.println("⚠ No student data available.");
+            return;
+        }
+
         System.out.print("Enter student ID to modify: ");
         String studentId = scanner.nextLine().trim();
 
@@ -654,6 +699,11 @@ public class Main {
     }
 
     public static void viewStudentDetails(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyStudent()) {
+            System.out.println("⚠ No student data available.");
+            return;
+        }
+
         System.out.print("Enter student ID to view details: ");
         String studentId = scanner.nextLine().trim();
         crs.viewStudentDetails(studentId);
@@ -665,6 +715,11 @@ public class Main {
         System.out.println("|       View Grades by Course      |");
         System.out.println("+----------------------------------+");
 
+        if (!crs.hasAnyCourse()) {
+            System.out.println("⚠ No course data available.");
+            return;
+        }
+
         System.out.print("Enter course ID to view grades: ");
         String courseId = scanner.nextLine();
         crs.viewGradesForCourse(courseId);
@@ -672,6 +727,11 @@ public class Main {
 
     // Enter grades for a course
     public static void enterGradesForCourse(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyCourse()) {
+            System.out.println("⚠ No course data available.");
+            return;
+        }
+
         System.out.print("Enter course ID to enter grades: ");
         String courseId = scanner.nextLine();
         crs.enterGradesForCourse(courseId, scanner);
@@ -693,6 +753,11 @@ public class Main {
     }
 
     private static void removeStudentFromCourse(CourseRegistrationSystem crs, Scanner scanner) {
+        if (!crs.hasAnyStudent()) {
+            System.out.println("⚠ No student data available.");
+            return;
+        }
+
         System.out.print("Enter student ID: ");
         String studentId = scanner.nextLine().trim();
         System.out.print("Enter course ID: ");
