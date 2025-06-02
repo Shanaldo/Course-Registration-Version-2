@@ -289,7 +289,6 @@ public class CourseRegistrationSystem {
     }
 
     // Retrieve student ID by username
-    // Now looks up by matching username to student.getName(), since password field no longer holds ID after change
     public String getStudentIdByUsername(String username) {
         for (Student s : students) {
             if (s.getName().equals(username)) {
