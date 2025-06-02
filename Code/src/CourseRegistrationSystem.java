@@ -143,6 +143,14 @@ public class CourseRegistrationSystem {
             System.out.println("Course with ID " + courseId + " does not exist. Cannot remove.");
             return;
         }
+        
+        public boolean hasAnyStudent() {
+            return !students.isEmpty();
+        }
+        
+        public boolean hasAnyCourse() {
+            return !courses.isEmpty();
+        }
 
         if (!course.getEnrolledStudents().isEmpty()
                 || !course.getWaitlist().isEmpty()
