@@ -60,11 +60,13 @@ public class Main {
                 }
 
                 // First‐login check: if they used their ID as password, force a change
-                if (password.equals(studentId)) {
-                    System.out.println("\nIt looks like this is your first login. Please set a new password:");
+               if (password.equals(studentId)) {
+                    System.out.println("\n⚠️  WARNING: This is your first login.");
+                    System.out.println("For security reasons, you must change your default password.");
+
                     String newPassword;
                     while (true) {
-                        System.out.print("Enter new password: ");
+                        System.out.print("Please enter a new password: ");
                         newPassword = scanner.nextLine().trim();
                         if (newPassword.isBlank()) {
                             System.out.println("Password cannot be empty. Try again.");
